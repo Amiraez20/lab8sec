@@ -267,18 +267,18 @@ Des Content Providers sont exposés publiquement sans permissions, permettant à
 
 ### Vérifications finales
 
-- Périmètre clairement défini et respecté
-- Informations de traçabilité complètes
-- Hash de l'APK documenté
-- Exports BeVigil sauvegardés
-- Rapport Yaazhini sauvegardé
-- Notes d'analyse complètes
-- Triage.csv rempli avec 12 constats
-- Mapping OWASP réalisé pour 10 constats
-- Rapport final complet et structuré
-- Aucun secret exposé dans les fichiers
-- Aucune donnée personnelle exposée
-- Aucune technique d'exploitation documentée
+- [x] Périmètre clairement défini et respecté
+- [x] Informations de traçabilité complètes
+- [x] Hash de l'APK documenté
+- [x] Exports BeVigil sauvegardés
+- [x] Rapport Yaazhini sauvegardé
+- [x] Notes d'analyse complètes
+- [x] Triage.csv rempli avec 12 constats
+- [x] Mapping OWASP réalisé pour 10 constats
+- [x] Rapport final complet et structuré
+- [x] Aucun secret exposé dans les fichiers
+- [x] Aucune donnée personnelle exposée
+- [x] Aucune technique d'exploitation documentée
 
 > **Signé** : Amira Ezbiri 
 

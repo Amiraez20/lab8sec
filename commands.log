@@ -1,0 +1,15 @@
+# Log des commandes exécutées - 2026-05-28 15:00:00
+mkdir 00-scope, 01-bevigil, 02-yaazhini, 03-triage, 04-report
+Created scope.md in 00-scope/
+Created analyse_info.txt
+Copy-Item InsecureBankv2.apk -> 00-scope/
+Get-FileHash -Path '00-scope\InsecureBankv2.apk' -Algorithm SHA256
+Hash SHA-256: B18AF2A0E44D7634BBCDF93664D9C78A2695E050393FCFBB5E8B91F902D194A4
+Updated analyse_info.txt with hash
+Created bevigil_notes.md in 01-bevigil/
+Created bevigil_export_summary.txt in 01-bevigil/
+Created yaazhini_notes.md in 02-yaazhini/
+Created triage.csv in 03-triage/
+Created owasp_mapping.md in 03-triage/
+Created rapport_final.md in 04-report/
+Created checklist_fin.md

@@ -1,0 +1,10 @@
+Date: 2026-05-28
+Analyste: Amira Ezbiri
+Cible: InsecureBankv2
+Artefact: InsecureBankv2.apk
+Provenance: APK pédagogique — fourni par l'enseignant
+Hash: B18AF2A0E44D7634BBCDF93664D9C78A2695E050393FCFBB5E8B91F902D194A4
+Versions outils:
+  - BeVigil: web (bevigil.com)
+  - Yaazhini: 2.0.2
+Environnement: Windows 11

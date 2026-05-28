@@ -22,5 +22,4 @@
 
 Je soussignée Amira Ezbiri certifie avoir réalisé cette analyse dans le respect du périmètre autorisé et des règles éthiques définies.
 
-Date: 2026-05-28
 Signature: Amira Ezbiri

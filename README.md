@@ -296,4 +296,4 @@ Des Content Providers sont exposés publiquement sans permissions, permettant à
 
 ---
 
-<p align="center"><em>Lab réalisé dans le cadre du cours de sécurité mobile — Université</em></p>
+<p align="center"><em>Lab réalisé dans le cadre du cours de sécurité mobile</em></p>

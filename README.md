@@ -1,12 +1,12 @@
-# 🔐 Lab 8 — Audit Défensif de Sécurité Mobile
+# Lab 8 — Audit Défensif de Sécurité Mobile
 
 > Analyse de la posture de sécurité de l'application **InsecureBankv2** à l'aide des outils **BeVigil** et **Yaazhini**
 >
-> **Analyste** : Amira Ezbiri · **Date** : 28 mai 2026 · **Statut** : ✅ Terminé
+> **Analyste** : Amira Ezbiri· **Statut** : Terminé
 
 ---
 
-## 📑 Sommaire
+## Sommaire
 
 - [Contexte et cadre légal](#-contexte-et-cadre-légal)
 - [Arborescence du projet](#-arborescence-du-projet)
@@ -22,7 +22,7 @@
 
 ---
 
-## 🎯 Contexte et cadre légal
+## Contexte et cadre légal
 
 Ce lab s'inscrit dans un **cadre strictement défensif et pédagogique**. Aucune exploitation de vulnérabilité n'a été tentée.
 
@@ -36,14 +36,14 @@ Ce lab s'inscrit dans un **cadre strictement défensif et pédagogique**. Aucune
 | **Environnement** | Windows 11 — PowerShell |
 
 **Limites respectées** :
-- ❌ Aucune exploitation des vulnérabilités découvertes
-- ❌ Aucun test intrusif
-- ❌ Aucun contournement de mécanismes de sécurité
-- ❌ Aucune cible non autorisée
+- Aucune exploitation des vulnérabilités découvertes
+- Aucun test intrusif
+- Aucun contournement de mécanismes de sécurité
+- Aucune cible non autorisée
 
 ---
 
-## 📂 Arborescence du projet
+## Arborescence du projet
 
 ```
 lab8/
@@ -64,15 +64,10 @@ lab8/
 ├── commands.log               # Historique des commandes
 ├── checklist_fin.md           # Clôture signée
 └── README.md                  # Ce fichier (compte rendu)
-```
-
-La capture ci-dessous montre la vérification de l'arborescence créée :
-
-![Vérification de l'arborescence complète du workspace](3.png)
 
 ---
 
-## ⚙️ Task 0 & 1 — Mise en place du workspace
+## Task 0 & 1 — Mise en place du workspace
 
 ### Objectif
 Créer la structure de dossiers normalisée, initialiser les fichiers de traçabilité (`analyse_info.txt`, `commands.log`) et définir le périmètre d'analyse dans `scope.md`.
@@ -94,7 +89,7 @@ Le fichier `scope.md` a ensuite été rédigé pour formaliser le périmètre au
 
 ---
 
-## 📦 Task 2 — Préparation de l'artefact
+## Task 2 — Préparation de l'artefact
 
 ### Objectif
 Copier l'APK dans le répertoire `00-scope/`, calculer son empreinte SHA-256 pour garantir l'intégrité, et mettre à jour les fichiers de traçabilité.
@@ -114,7 +109,7 @@ Ce hash constitue l'**empreinte digitale** de l'artefact. Il permet de vérifier
 
 ---
 
-## 🔎 Task 3 & 4 — Analyse BeVigil
+## Task 3 & 4 — Analyse BeVigil
 
 ### Objectif
 Utiliser la plateforme BeVigil (CloudSEK) pour scanner l'application et collecter les signaux d'exposition externes : assets, endpoints, domaines, technologies, trackers.
@@ -154,7 +149,7 @@ Les données extraites de BeVigil ont été documentées dans le fichier `bevigi
 
 ---
 
-## 🔬 Task 5 & 6 — Analyse Yaazhini
+## Task 5 & 6 — Analyse Yaazhini
 
 ### Objectif
 Effectuer une analyse statique approfondie de l'APK avec Yaazhini pour identifier les vulnérabilités dans le code, le manifest et les configurations internes.
@@ -191,7 +186,7 @@ L'analyse du rapport a permis d'identifier **7 éléments majeurs** documentés 
 
 ---
 
-## 📊 Task 7 — Triage et normalisation
+## Task 7 — Triage et normalisation
 
 ### Objectif
 Consolider les résultats BeVigil et Yaazhini dans un fichier `triage.csv` unique, éliminer les doublons et attribuer un identifiant, une sévérité et un statut à chaque constat.
@@ -206,14 +201,14 @@ Les résultats des deux outils ont été fusionnés en **12 constats uniques** (
 
 | Sévérité | Nombre | Pourcentage |
 |---|---|---|
-| 🔴 **High** | 5 | 42% |
-| 🟠 **Medium** | 4 | 33% |
-| 🟡 **Low** | 1 | 8% |
-| ⚪ **Info** | 2 | 17% |
+| **High** | 5 | 42% |
+| **Medium** | 4 | 33% |
+| **Low** | 1 | 8% |
+| **Info** | 2 | 17% |
 
 ---
 
-## 🗺️ Task 8 — Corrélation OWASP
+## Task 8 — Corrélation OWASP
 
 ### Objectif
 Relier chaque constat aux standards **OWASP MASVS** (Mobile Application Security Verification Standard) pour contextualiser les findings dans un cadre reconnu par l'industrie.
@@ -236,27 +231,27 @@ Le fichier `owasp_mapping.md` a été créé avec **10 mappings** couvrant les c
 
 ---
 
-## 📝 Task 9 — Synthèse et constats majeurs
+## Task 9 — Synthèse et constats majeurs
 
 ### Top 5 des vulnérabilités identifiées
 
-#### 1. 🔴 Communication HTTP en clair (FIND-001)
+#### 1.  Communication HTTP en clair (FIND-001)
 L'application transmet des données sensibles (credentials, informations bancaires) via le protocole HTTP non chiffré. Un attaquant en position man-in-the-middle peut intercepter l'intégralité du trafic réseau.
 > **Recommandation** : Forcer HTTPS avec TLS 1.2+ et implémenter le certificate pinning.
 
-#### 2. 🔴 Mode Debug activé en production (FIND-002)
+#### 2.  Mode Debug activé en production (FIND-002)
 L'attribut `android:debuggable="true"` dans le manifest permet à quiconque possédant ADB d'attacher un debugger à l'application sur un appareil non rooté, exposant les données internes.
 > **Recommandation** : Mettre `android:debuggable="false"` pour les builds de production.
 
-#### 3. 🔴 Backup ADB non protégé (FIND-003)
+#### 3.  Backup ADB non protégé (FIND-003)
 Avec `android:allowBackup="true"`, les données privées de l'application (tokens, préférences, base de données) peuvent être extraites via un simple câble USB sans rooter l'appareil.
 > **Recommandation** : Désactiver le backup ou configurer des règles sélectives via `fullBackupContent`.
 
-#### 4. 🔴 Algorithmes cryptographiques obsolètes (FIND-004)
+#### 4.  Algorithmes cryptographiques obsolètes (FIND-004)
 L'application utilise MD5 et SHA-1 pour le hachage des mots de passe. Ces algorithmes sont considérés cassés et permettent la récupération des valeurs originales via rainbow tables.
 > **Recommandation** : Migrer vers bcrypt, Argon2 ou PBKDF2 avec un sel unique.
 
-#### 5. 🔴 Composants Android exportés sans protection (FIND-005)
+#### 5.  Composants Android exportés sans protection (FIND-005)
 Des Content Providers sont exposés publiquement sans permissions, permettant à toute application tierce installée de lire ou modifier les données internes.
 > **Recommandation** : Ajouter `android:exported="false"` ou des permissions explicites.
 
@@ -268,28 +263,28 @@ Des Content Providers sont exposés publiquement sans permissions, permettant à
 
 ---
 
-## ✅ Task 10 — Clôture
+## Task 10 — Clôture
 
 ### Vérifications finales
 
-- [x] Périmètre clairement défini et respecté
-- [x] Informations de traçabilité complètes
-- [x] Hash de l'APK documenté
-- [x] Exports BeVigil sauvegardés
-- [x] Rapport Yaazhini sauvegardé
-- [x] Notes d'analyse complètes
-- [x] Triage.csv rempli avec 12 constats
-- [x] Mapping OWASP réalisé pour 10 constats
-- [x] Rapport final complet et structuré
-- [x] Aucun secret exposé dans les fichiers
-- [x] Aucune donnée personnelle exposée
-- [x] Aucune technique d'exploitation documentée
+- Périmètre clairement défini et respecté
+- Informations de traçabilité complètes
+- Hash de l'APK documenté
+- Exports BeVigil sauvegardés
+- Rapport Yaazhini sauvegardé
+- Notes d'analyse complètes
+- Triage.csv rempli avec 12 constats
+- Mapping OWASP réalisé pour 10 constats
+- Rapport final complet et structuré
+- Aucun secret exposé dans les fichiers
+- Aucune donnée personnelle exposée
+- Aucune technique d'exploitation documentée
 
-> **Signé** : Amira Ezbiri — 28 mai 2026
+> **Signé** : Amira Ezbiri 
 
 ---
 
-## 🛠️ Outils utilisés
+## Outils utilisés
 
 | Outil | Version | Rôle |
 |---|---|---|
